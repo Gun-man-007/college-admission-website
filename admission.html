@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/SheetJS/js-xlsx/master/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="admission.js"></script>
+  
+  <link rel="stylesheet" href="admission-styles.css">
+</head>
+
+<body ng-app="myApp">
+  <header>
+    <h1>BEST ENGINEERING COLLEGE</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Admission</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container" ng-controller="AdmissionController">
+    <h2>Admission Form</h2>
+    <form id="admissionForm" ng-submit="submitForm()">
+      <label for="name">Name:</label>
+      <input type="text" name="name" ng-model="formData.name" required>
+
+      <label for="dob">DOB:</label>
+      <input type="date" name="dob" ng-model="formData.dob" required>
+
+      <label for="gender">Gender:</label>
+      <select name="gender" ng-model="formData.gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="community">Community:</label>
+      <select name="community" ng-model="formData.community" required>
+        <option value="BC">BC</option>
+        <option value="MBC">MBC</option>
+        <option value="OC">OC</option>
+        <option value="DNC">DNC</option>
+        <option value="SC">SC</option>
+        <option value="ST">ST</option>
+      </select>
+
+      <label for="tenthRegNo">10th Reg No:</label>
+      <input type="text" name="tenthRegNo" ng-model="formData.tenthRegNo" required>
+
+      <label for="tenthPercentage">10th Percentage:</label>
+      <input type="number" name="tenthPercentage" ng-model="formData.tenthPercentage" min="0" max="100" required>
+
+      <label for="twelfthRegNo">12th Reg No:</label>
+      <input type="text" name="twelfthRegNo" ng-model="formData.twelfthRegNo" required>
+
+      <label for="twelfthPercentage">12th Percentage:</label>
+      <input type="number" name="twelfthPercentage" ng-model="formData.twelfthPercentage" min="0" max="100" required>
+
+      <label for="mobile">Mobile No:</label>
+      <input type="tel" name="mobile" ng-model="formData.mobile" pattern="[0-9]{10}" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" name="email" ng-model="formData.email" required>
+
+      <label for="fatherName">Father's Name:</label>
+      <input type="text" name="fatherName" ng-model="formData.fatherName" required>
+
+      <label for="fatherOccupation">Father's Occupation:</label>
+      <input type="text" name="fatherOccupation" ng-model="formData.fatherOccupation" required>
+
+      <label for="annualIncome">Annual Income:</label>
+      <input type="number" name="annual" ng-model="formData.annual" required>
+
+      <label for="aadhar">Aadhar No:</label>
+      <input type="text" name="aadhar" ng-model="formData.aadhar" required>
+
+      <label for="address">Permanent Address:</label>
+      <textarea name="address" ng-model="formData.address" rows="4" required></textarea>
+
+      <label for="course">Choose a Course:</label>
+      <select name="course" ng-model="formData.course" required>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="EEE">EEE</option>
+        <option value="MECH">MECH</option>
+        <option value="CIVIL">CIVIL</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="successMessage" ng-show="showSuccessMessage">{{ successMessage }}</div>
+  </div>
+</body>
+
+</html>
