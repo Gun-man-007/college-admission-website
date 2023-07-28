@@ -1,4 +1,4 @@
-College Admission Website Project Documentation
+College Admission Website Project 
 
 Project Overview
 
